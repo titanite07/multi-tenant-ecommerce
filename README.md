@@ -6,27 +6,44 @@ A production-ready multi-tenant e-commerce backend built with Django REST Framew
 
 **Production API:** https://ecommerce-backend-361650391084.us-central1.run.app
 
-| Endpoint     | URL                                                                      |
-| ------------ | ------------------------------------------------------------------------ |
-| API Root     | https://ecommerce-backend-361650391084.us-central1.run.app/              |
-| Health Check | https://ecommerce-backend-361650391084.us-central1.run.app/health/       |
-| Get Token    | https://ecommerce-backend-361650391084.us-central1.run.app/api/token/    |
-| Products     | https://ecommerce-backend-361650391084.us-central1.run.app/api/products/ |
-| Orders       | https://ecommerce-backend-361650391084.us-central1.run.app/api/orders/   |
+| Endpoint     | URL                                                                        |
+| ------------ | -------------------------------------------------------------------------- |
+| API Root     | https://ecommerce-backend-361650391084.us-central1.run.app/                |
+| Health Check | https://ecommerce-backend-361650391084.us-central1.run.app/health/         |
+| Dashboard    | https://ecommerce-backend-361650391084.us-central1.run.app/api/dashboard/  |
+| Categories   | https://ecommerce-backend-361650391084.us-central1.run.app/api/categories/ |
+| Products     | https://ecommerce-backend-361650391084.us-central1.run.app/api/products/   |
+| Orders       | https://ecommerce-backend-361650391084.us-central1.run.app/api/orders/     |
+| Audit Logs   | https://ecommerce-backend-361650391084.us-central1.run.app/api/audit-logs/ |
 
 ## Features
 
-- **Multi-Tenancy**: Shared database architecture with logical isolation per vendor
-- **JWT Authentication**: Secure token-based auth with custom claims (tenant_id, role)
-- **Role-Based Access Control**: Owner, Staff, and Customer roles with different permissions
-- **RESTful APIs**: Complete CRUD operations for Products and Orders
+### Core Features
+
+- **Multi-Tenancy**: Shared database with logical isolation per vendor
+- **JWT Authentication**: Custom claims with tenant_id and role
+- **Role-Based Access Control**: Owner, Staff, and Customer permissions
 - **Cloud-Ready**: Deployed to GCP Cloud Run
+
+### Advanced Features
+
+- **Product Categories**: Hierarchical category system with subcategories
+- **Order Items with Quantity**: Track quantity and price per product
+- **Inventory Tracking**: Stock management with low-stock alerts
+- **Soft Delete**: Archive records instead of permanent deletion
+- **Audit Logging**: Track all create/update/delete actions
+- **Dashboard Analytics**: Revenue, order counts, low stock alerts
+- **Pagination**: Configurable page size for all list endpoints
+- **Filtering**: Filter products by price, category, stock status
+- **Search**: Full-text search on products and orders
+- **Order Management**: Status updates, cancellation with stock restore
 
 ## Tech Stack
 
 - Python 3.10+
 - Django 4.2
 - Django REST Framework
+- Django Filter
 - SimpleJWT for authentication
 - SQLite (development) / PostgreSQL (production)
 - Gunicorn + WhiteNoise (production)
