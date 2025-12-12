@@ -2,13 +2,25 @@
 
 A production-ready multi-tenant e-commerce backend built with Django REST Framework where multiple vendors (tenants) can host their stores on a shared platform while maintaining complete data isolation.
 
+## 🚀 Live API URL
+
+**Production API:** https://ecommerce-backend-361650391084.us-central1.run.app
+
+| Endpoint     | URL                                                                      |
+| ------------ | ------------------------------------------------------------------------ |
+| API Root     | https://ecommerce-backend-361650391084.us-central1.run.app/              |
+| Health Check | https://ecommerce-backend-361650391084.us-central1.run.app/health/       |
+| Get Token    | https://ecommerce-backend-361650391084.us-central1.run.app/api/token/    |
+| Products     | https://ecommerce-backend-361650391084.us-central1.run.app/api/products/ |
+| Orders       | https://ecommerce-backend-361650391084.us-central1.run.app/api/orders/   |
+
 ## Features
 
 - **Multi-Tenancy**: Shared database architecture with logical isolation per vendor
 - **JWT Authentication**: Secure token-based auth with custom claims (tenant_id, role)
 - **Role-Based Access Control**: Owner, Staff, and Customer roles with different permissions
 - **RESTful APIs**: Complete CRUD operations for Products and Orders
-- **Cloud-Ready**: Dockerfile configured for GCP Cloud Run deployment
+- **Cloud-Ready**: Deployed to GCP Cloud Run
 
 ## Tech Stack
 
@@ -247,20 +259,14 @@ curl -X POST http://127.0.0.1:8000/api/orders/ \
 ### Using Docker
 
 ```bash
-# Build the image
 docker build -t ecommerce-backend .
-
-# Test locally
 docker run -p 8000:8000 -e PORT=8000 ecommerce-backend
 ```
 
 ### Deploy to Cloud Run
 
 ```bash
-# Authenticate with GCP
 gcloud auth login
-
-# Deploy
 gcloud run deploy ecommerce-backend \
   --source . \
   --region us-central1 \
@@ -274,19 +280,19 @@ gcloud run deploy ecommerce-backend \
 
 ```
 AskmyIdentity/
-├── ecommerce/              # Django project settings
-│   ├── settings.py         # Configuration (DRF, JWT, CORS)
-│   ├── urls.py             # Main URL routing
-│   └── wsgi.py             # WSGI entry point
-├── core/                   # Main application
-│   ├── models.py           # Tenant, User, Product, Order
-│   ├── serializers.py      # API serializers + CustomTokenObtainPairSerializer
-│   ├── views.py            # TenantAwareViewSet + endpoints
-│   ├── permissions.py      # Role-based permission classes
-│   └── urls.py             # API routes
+├── ecommerce/
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── core/
+│   ├── models.py
+│   ├── serializers.py
+│   ├── views.py
+│   ├── permissions.py
+│   └── urls.py
 ├── manage.py
 ├── requirements.txt
-├── Dockerfile              # Cloud Run ready
+├── Dockerfile
 └── README.md
 ```
 

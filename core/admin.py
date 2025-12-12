@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Tenant, User, Product, Order
 
+
 @admin.register(Tenant)
 class TenantAdmin(admin.ModelAdmin):
     list_display = ['name', 'subdomain', 'owner_email', 'created_at']
